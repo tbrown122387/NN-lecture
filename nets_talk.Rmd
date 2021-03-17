@@ -29,7 +29,7 @@ Options:
 - and are biologically inspired.
 
 
-We will focus on **feedforward networks**, and we'll use Keras
+We will focus on **feedforward networks**, and we'll use Keras.
 
 ```{r,  out.width="20%", fig.align='right'}
 knitr::include_graphics("pics/keras.png")
@@ -53,16 +53,17 @@ knitr::include_graphics("pics/Image 3-10-21 at 3.56 PM.png")
 
 This is a big field!
 
-We avoid discussing:
+Topics I won't get to:
 
 - other types of neural nets (i.e. RNNs, RBMs, autoencoders, etc.)
-- theoretical guarantees (if any)
+- when/if $\exists$ theoretical guarantees
 - other types of data (speech, text, etc.)
 - details of optimization algorithms
 - regularization
-- a detailed overview of this software (or other libraries).
+- a detailed overview of this software (or other libraries)
+- other types of layers and strategies
 
-All code is available at TODO
+Check out the code: https://github.com/tbrown122387/NN-lecture/
 
 
 
@@ -72,7 +73,7 @@ All code is available at TODO
 Approximate $\mathbf{y}$ with 
 $$
 f(\mathbf{x}) = 
-\text{softmax}( \mathbf{W}^T\mathbf{x} + \mathbf{b} ) 
+\text{softmax}( \mathbf{W}^\intercal\mathbf{x} + \mathbf{b} ) 
 $$
 where
 $$
@@ -80,7 +81,7 @@ $$
 \begin{bmatrix}
 z_1 \\
 \vdots \\ 
-z_n
+z_{n}
 \end{bmatrix}
 \right)
 = 
@@ -90,7 +91,7 @@ z_n
 \exp(z_n)
 \end{bmatrix}
 \Bigg /
-\left( \sum_{i=1}^{10}\exp(z_i) \right)
+\left( \sum_{i=1}^{n}\exp(z_i) \right)
 $$
 
 
@@ -105,7 +106,7 @@ then show image as numbers in two ways
 
 $$
 f(\mathbf{x}) = 
-\text{softmax}( \mathbf{W}^T\mathbf{x} + \mathbf{b} ) 
+\text{softmax}( \mathbf{W}^\intercal\mathbf{x} + \mathbf{b} ) 
 $$
 
 
@@ -187,7 +188,12 @@ knitr::include_graphics("pics/kernel_pic.png")
 
 ## Max Pooling Layers
 
-TODO
+**Max pooling** layers are often added after a convolutional layer. 
+
+These help make the representation invariant to small shifts in the image, which can be a useful property if we care more about *whether* some feature is present rather than exactly *where* it is.
+
+They are also a *parameter-free* way to reduce the size of later layers, which *reduces computational costs* and *prevents overfitting*.
+
 
 
 ## Convolutional Neural Networks
@@ -198,6 +204,16 @@ TODO
 knitr::include_graphics("pics/cnn_code.png")
 ```
 This yields $98.51\%$ accuracy on the test set.
+
+## Visualizing the Architecture
+
+
+
+```{r, out.width="75%"}
+knitr::include_graphics("pics/cnn1.png")
+```
+
+
 
 ## Visualizing the CNN's Kernels
 
@@ -218,9 +234,13 @@ knitr::include_graphics("pics/cnn_filter_output.png")
 
 
 
-## Where Do We Go From Here?
+## Thanks!
 
+(and happy St. Patty's Day!)
 
+```{r, out.width="40%"}
+knitr::include_graphics("pics/charlie.png")
+```
 
 <!-- TODO read chapter 6 section -->
 
